@@ -709,6 +709,98 @@ body {
 .sponsor-section {
     background: linear-gradient(135deg, var(--primary-color), var(--tanabata-purple));
     color: white;
+}
+
+.sponsor-section .section-title-alt {
+    color: white;
+}
+
+.sponsor-section .section-title-alt::after {
+    background: white;
+}
+
+.sponsor-tier {
+    margin-bottom: 3rem;
+}
+
+.sponsor-tier-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.sponsor-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.sponsor-logos.platinum .sponsor-logo-placeholder,
+.sponsor-logos.platinum .sponsor-logo {
+    width: 350px;
+    height: 200px;
+}
+
+.sponsor-logos.gold .sponsor-logo-placeholder,
+.sponsor-logos.gold .sponsor-logo {
+    width: 280px;
+    height: 160px;
+}
+
+.sponsor-logos.silver .sponsor-logo-placeholder,
+.sponsor-logos.silver .sponsor-logo {
+    width: 220px;
+    height: 130px;
+}
+
+.sponsor-logo-placeholder {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px dashed rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.sponsor-logo-placeholder:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.sponsor-logo-placeholder p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.sponsor-logo {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.sponsor-logo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.sponsor-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.sponsor-cta {
+    margin-top: 4rem;
     text-align: center;
 }
 
@@ -830,6 +922,24 @@ body {
 
     .access-content {
         grid-template-columns: 1fr;
+    }
+
+    .sponsor-logos.platinum .sponsor-logo-placeholder,
+    .sponsor-logos.platinum .sponsor-logo {
+        width: 280px;
+        height: 160px;
+    }
+
+    .sponsor-logos.gold .sponsor-logo-placeholder,
+    .sponsor-logos.gold .sponsor-logo {
+        width: 240px;
+        height: 140px;
+    }
+
+    .sponsor-logos.silver .sponsor-logo-placeholder,
+    .sponsor-logos.silver .sponsor-logo {
+        width: 200px;
+        height: 120px;
     }
 
     .footer-content {
