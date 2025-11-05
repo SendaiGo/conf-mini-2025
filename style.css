@@ -774,6 +774,12 @@ body {
     height: 100px;
 }
 
+.sponsor-logos.venue .sponsor-logo-placeholder,
+.sponsor-logos.venue .sponsor-logo {
+    width: 280px;
+    height: 160px;
+}
+
 .sponsor-logo-placeholder {
     background: rgba(255, 255, 255, 0.1);
     border: 2px dashed rgba(255, 255, 255, 0.4);
