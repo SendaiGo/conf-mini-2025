@@ -126,13 +126,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Google Maps初期化
 function initMap() {
-    // 会場の座標（アーバンネットビル仙台中央）
-    const venueLocation = { lat: 38.258726, lng: 140.881878 };
+    // 会場の住所
+    const venueAddress = '宮城県仙台市青葉区中央4丁目4-19 アーバンネットビル仙台中央';
 
-    // マップの作成
+    // ジオコーダーの作成
+    const geocoder = new google.maps.Geocoder();
+
+    // マップの初期作成（仙台駅周辺を表示）
     const map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
-        center: venueLocation,
+        zoom: 13,
+        center: { lat: 38.2581925, lng: 140.8760207 },
         mapTypeControl: false,
         streetViewControl: false,
         fullscreenControl: true,
@@ -143,18 +146,6 @@ function initMap() {
                 stylers: [{ visibility: 'off' }]
             }
         ]
-    });
-
-    // Gopherアイコンのマーカー
-    const marker = new google.maps.Marker({
-        position: venueLocation,
-        map: map,
-        title: 'アーバンネットビル仙台中央 カンファレンスルーム',
-        icon: {
-            url: 'gopher-marker.svg',
-            scaledSize: new google.maps.Size(50, 50),
-            anchor: new google.maps.Point(25, 50)
-        }
     });
 
     // 情報ウィンドウ
@@ -169,9 +160,99 @@ function initMap() {
         `
     });
 
-    // マーカークリックで情報ウィンドウを表示
-    marker.addListener('click', () => {
-        infowindow.open(map, marker);
+    // DirectionsServiceとRendererの作成
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer({
+        suppressMarkers: true, // デフォルトのマーカーを非表示
+        polylineOptions: {
+            strokeColor: '#00ADD8',
+            strokeWeight: 5,
+            strokeOpacity: 0.8
+        }
+    });
+    directionsRenderer.setMap(map);
+
+    // JR仙台駅から会場までの経路を表示
+    const sendaiStation = 'JR仙台駅';
+
+    // 住所からジオコーディング
+    geocoder.geocode({ address: venueAddress }, (results, status) => {
+        if (status === 'OK' && results[0]) {
+            const location = results[0].geometry.location;
+
+            // マップの中心を更新
+            map.setCenter(location);
+
+            // Gopherアイコンのマーカー
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                title: 'アーバンネットビル仙台中央 カンファレンスルーム',
+                icon: {
+                    url: 'pin.png',
+                    scaledSize: new google.maps.Size(80, 100),
+                    anchor: new google.maps.Point(40, 90)
+                }
+            });
+
+            // JR仙台駅のマーカー
+            const stationMarker = new google.maps.Marker({
+                position: { lat: 38.2601908, lng: 140.8820988 },
+                map: map,
+                title: 'JR仙台駅',
+                label: {
+                    text: 'JR仙台駅',
+                    color: '#FFFFFF',
+                    fontSize: '12px',
+                    fontWeight: 'bold'
+                },
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 10,
+                    fillColor: '#22C55E',
+                    fillOpacity: 1,
+                    strokeColor: '#FFFFFF',
+                    strokeWeight: 2
+                }
+            });
+
+            // 経路の計算と表示
+            directionsService.route({
+                origin: sendaiStation,
+                destination: venueAddress,
+                travelMode: google.maps.TravelMode.WALKING
+            }, (result, status) => {
+                if (status === 'OK') {
+                    directionsRenderer.setDirections(result);
+
+                    // ルート情報を取得
+                    const route = result.routes[0].legs[0];
+                    const distance = route.distance.text;
+                    const duration = route.duration.text;
+
+                    // 情報ウィンドウの内容を更新
+                    infowindow.setContent(`
+                        <div style="padding: 10px; font-family: 'Noto Sans JP', sans-serif;">
+                            <h3 style="margin: 0 0 5px 0; color: #00ADD8;">Go Conference mini in Sendai 2026</h3>
+                            <p style="margin: 5px 0;"><strong>アーバンネットビル仙台中央</strong></p>
+                            <p style="margin: 5px 0; font-size: 14px;">〒980-0021 宮城県仙台市青葉区中央4丁目4-19</p>
+                            <p style="margin: 5px 0; font-size: 14px; color: #22C55E; font-weight: bold;">
+                                🚶 JR仙台駅西口より徒歩 ${duration} (${distance})
+                            </p>
+                        </div>
+                    `);
+                } else {
+                    console.error('Directions request failed: ' + status);
+                }
+            });
+
+            // マーカークリックで情報ウィンドウを表示
+            marker.addListener('click', () => {
+                infowindow.open(map, marker);
+            });
+        } else {
+            console.error('Geocoding failed: ' + status);
+        }
     });
 }
 
