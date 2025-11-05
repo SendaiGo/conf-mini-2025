@@ -893,13 +893,14 @@ body {
     }
 
     .timeline::before {
-        left: 30px;
+        left: 20px;
     }
 
     .timeline-item {
         flex-direction: column;
         align-items: flex-start;
-        margin-left: 60px;
+        margin-left: 50px;
+        margin-bottom: 4rem;
     }
 
     .timeline-item:nth-child(even) {
@@ -908,11 +909,17 @@ body {
 
     .timeline-date {
         text-align: left !important;
-        padding: 0 0 1rem 0 !important;
+        padding: 0 0 0.5rem 0 !important;
+        font-size: 1rem;
+        margin-left: -30px;
+    }
+
+    .timeline-content {
+        width: calc(100% - 20px);
     }
 
     .timeline-item::after {
-        left: 30px;
+        display: none;
     }
 
     .time-slot {
