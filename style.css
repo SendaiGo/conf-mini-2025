@@ -705,6 +705,17 @@ body {
     letter-spacing: 2px;
 }
 
+.map-container {
+    margin-top: 2rem;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.map-container iframe {
+    display: block;
+}
+
 /* Sponsor Section */
 .sponsor-section {
     background: linear-gradient(135deg, var(--primary-color), var(--tanabata-purple));
@@ -755,6 +766,12 @@ body {
 .sponsor-logos.silver .sponsor-logo {
     width: 220px;
     height: 130px;
+}
+
+.sponsor-logos.community .sponsor-logo-placeholder,
+.sponsor-logos.community .sponsor-logo {
+    width: 180px;
+    height: 100px;
 }
 
 .sponsor-logo-placeholder {

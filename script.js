@@ -123,3 +123,57 @@ document.addEventListener('DOMContentLoaded', () => {
         numberObserver.observe(element);
     });
 });
+
+// Google Maps初期化
+function initMap() {
+    // 会場の座標（アーバンネットビル仙台中央）
+    const venueLocation = { lat: 38.258726, lng: 140.881878 };
+
+    // マップの作成
+    const map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 16,
+        center: venueLocation,
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: true,
+        styles: [
+            {
+                featureType: 'poi',
+                elementType: 'labels',
+                stylers: [{ visibility: 'off' }]
+            }
+        ]
+    });
+
+    // Gopherアイコンのマーカー
+    const marker = new google.maps.Marker({
+        position: venueLocation,
+        map: map,
+        title: 'アーバンネットビル仙台中央 カンファレンスルーム',
+        icon: {
+            url: 'gopher-marker.svg',
+            scaledSize: new google.maps.Size(50, 50),
+            anchor: new google.maps.Point(25, 50)
+        }
+    });
+
+    // 情報ウィンドウ
+    const infowindow = new google.maps.InfoWindow({
+        content: `
+            <div style="padding: 10px; font-family: 'Noto Sans JP', sans-serif;">
+                <h3 style="margin: 0 0 5px 0; color: #00ADD8;">Go Conference mini in Sendai 2026</h3>
+                <p style="margin: 5px 0;"><strong>アーバンネットビル仙台中央</strong></p>
+                <p style="margin: 5px 0; font-size: 14px;">〒980-0021 宮城県仙台市青葉区中央4丁目4-19</p>
+                <p style="margin: 5px 0; font-size: 14px;">仙台駅西口より徒歩3分</p>
+            </div>
+        `
+    });
+
+    // マーカークリックで情報ウィンドウを表示
+    marker.addListener('click', () => {
+        infowindow.open(map, marker);
+    });
+}
+
+// Google Maps APIが読み込まれる前にinitMapが呼ばれた場合のフォールバック
+window.initMap = initMap;

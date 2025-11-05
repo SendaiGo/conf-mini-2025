@@ -8,15 +8,15 @@
     <meta property="og:title" content="Go Conference mini in Sendai 2026">
     <meta property="og:description" content="2026年2月21日（土）開催 - Go Forward Together - 東北から広がるGoコミュニティ">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sendaigo.github.io/conf-mini-2025/">
-    <meta property="og:image" content="https://sendaigo.github.io/conf-mini-2025/ogp.png">
+    <meta property="og:url" content="https://sendaigo.jp/">
+    <meta property="og:image" content="https://sendaigo.jp/ogp.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Go Conference mini in Sendai 2026">
     <meta name="twitter:description" content="2026年2月21日（土）開催 - Go Forward Together - 東北から広がるGoコミュニティ">
-    <meta name="twitter:image" content="https://sendaigo.github.io/conf-mini-2025/ogp.png">
+    <meta name="twitter:image" content="https://sendaigo.jp/ogp.png">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -205,7 +205,7 @@
                 </div>
             </div>
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3131.9267831547754!2d140.87970877619635!3d38.258726371778815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a283e22e08c49%3A0x28f24fc0dd39e1a5!2z44Ki44O844OQ44Oz44ON44OD44OI44OT44Or5LuZ5Y-w5Lit5aSuIOOCq+ODs+ODleOCoeODrOODs-OCueODq-ODvOODoA!5e0!3m2!1sja!2sjp!4v1730508000000!5m2!1sja!2sjp&markers=38.258726371778815,140.87970877619635" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div id="map" style="width: 100%; height: 400px;"></div>
             </div>
         </div>
     </section>
@@ -291,7 +291,6 @@
                 </div>
                 <div class="footer-links">
                     <h4>Links</h4>
-                    <a href="https://github.com/SendaiGo/conf-mini-2025" target="_blank">GitHub</a>
                     <a href="https://sendaigo.connpass.com/" target="_blank">Connpass</a>
                 </div>
                 <div class="footer-contact">
@@ -305,6 +304,7 @@
         </div>
     </footer>
 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmdFzuKTYVqDP2qae1vaGDBEr8qs5gwqk&callback=initMap" async defer></script>
     <script src="script.js"></script>
 </body>
 </html>
