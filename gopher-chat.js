@@ -181,7 +181,7 @@ class WanderingGopher {
 class GopherChatBot {
     constructor() {
         this.messages = [];
-        this.apiEndpoint = 'http://localhost:8080/api/chat'; // バックエンドAPIのエンドポイント
+        this.apiEndpoint = 'https://api.sendaigo.jp/api/chat'; // バックエンドAPIのエンドポイント
         this.init();
     }
 

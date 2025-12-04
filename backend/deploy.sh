@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # Google Cloud プロジェクトIDを設定
-PROJECT_ID="your-project-id"
+PROJECT_ID="event-471009"
 REGION="asia-northeast1"
-SERVICE_NAME="gopher-chatbot"
+SERVICE_NAME="conf-mini-backend"
+IMAGE_NAME="asia-northeast1-docker.pkg.dev/event-471009/conf-mini-2026/backend:latest"
 
 # 環境変数チェック
 if [ -z "$OPENAI_API_KEY" ]; then
@@ -16,7 +17,7 @@ echo "Building and deploying to Cloud Run..."
 
 # Cloud Runにデプロイ
 gcloud run deploy $SERVICE_NAME \
-    --source . \
+    --image $IMAGE_NAME \
     --region $REGION \
     --platform managed \
     --allow-unauthenticated \
