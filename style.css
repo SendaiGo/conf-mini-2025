@@ -780,6 +780,12 @@ body {
     height: 160px;
 }
 
+.sponsor-logos.drink .sponsor-logo-placeholder,
+.sponsor-logos.drink .sponsor-logo {
+    width: 240px;
+    height: 130px;
+}
+
 .sponsor-logo-placeholder {
     background: rgba(255, 255, 255, 0.1);
     border: 2px dashed rgba(255, 255, 255, 0.4);
@@ -968,6 +974,12 @@ body {
 
     .sponsor-logos.silver .sponsor-logo-placeholder,
     .sponsor-logos.silver .sponsor-logo {
+        width: 200px;
+        height: 120px;
+    }
+
+    .sponsor-logos.drink .sponsor-logo-placeholder,
+    .sponsor-logos.drink .sponsor-logo {
         width: 200px;
         height: 120px;
     }
