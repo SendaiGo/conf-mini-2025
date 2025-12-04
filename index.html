@@ -27,7 +27,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="gopher-chat.css">
 </head>
 <body>
     <!-- ローディング画面 -->
@@ -230,7 +229,7 @@
             <div class="sponsor-tier">
                 <h3 class="sponsor-tier-title">Masamune Sponsor</h3>
                 <div class="sponsor-logos platinum">
-                    <a href="https://www.upsider.com/" target="_blank" class="sponsor-logo">
+                    <a href="https://up-sider.com/" target="_blank" class="sponsor-logo">
                         <img src="/sponsor/UPSIDER_Logo_Black.png" alt="UPSIDER">
                     </a>
                 </div>
@@ -267,7 +266,7 @@
             <div class="sponsor-tier">
                 <h3 class="sponsor-tier-title">Community Sponsor</h3>
                 <div class="sponsor-logos community">
-                    <a href="https://gocon.jp/" target="_blank" class="sponsor-logo">
+                    <a href="https://gotalk.connpass.com/" target="_blank" class="sponsor-logo">
                         <img src="/sponsor/community/GoConnect_logo.svg" alt="Go Connect">
                     </a>
                     <div class="sponsor-logo-placeholder">
@@ -296,9 +295,9 @@
             <div class="sponsor-tier">
                 <h3 class="sponsor-tier-title">ドリンクスポンサー</h3>
                 <div class="sponsor-logos drink">
-                    <div class="sponsor-logo">
-                        <img src="/sponsor/np_basic_4c_rgb_h80.png" alt="np basic ロゴ">
-                    </div>
+                    <a href="https://corp.netprotections.com/" target="_blank" class="sponsor-logo">
+                        <img src="/sponsor/np_basic_4c_rgb_h80.png" alt="ネットプロテクションズ">
+                    </a>
                 </div>
             </div>
 
@@ -345,37 +344,7 @@
         </div>
     </footer>
 
-    <!-- Gopherチャットモーダル -->
-    <div id="gopher-chat-modal" class="gopher-chat-modal">
-        <div class="gopher-chat-header">
-            <h3>ʕ◔ϖ◔ʔ Gopherくんとお話</h3>
-            <button id="gopher-close-btn" class="gopher-close-btn">×</button>
-        </div>
-        <div id="gopher-messages" class="gopher-messages">
-            <div id="gopher-welcome" class="gopher-welcome">
-                <h3>こんにちは！</h3>
-                <p>Go Conference mini in Sendai 2026について何でも聞いてね！</p>
-                <div class="gopher-suggestions">
-                    <button class="gopher-suggestion-btn">仙台のおすすめグルメは？</button>
-                    <button class="gopher-suggestion-btn">会場へのアクセス方法は？</button>
-                    <button class="gopher-suggestion-btn">参加費はいくら？</button>
-                    <button class="gopher-suggestion-btn">前夜祭について教えて</button>
-                </div>
-            </div>
-        </div>
-        <div class="gopher-input-container">
-            <input type="text" id="gopher-input" class="gopher-input" placeholder="メッセージを入力...">
-            <button id="gopher-send-btn" class="gopher-send-btn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="22" y1="2" x2="11" y2="13"></line>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                </svg>
-            </button>
-        </div>
-    </div>
-
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmdFzuKTYVqDP2qae1vaGDBEr8qs5gwqk&callback=initMap" async defer></script>
     <script src="script.js"></script>
-    <script src="gopher-chat.js"></script>
 </body>
 </html>
