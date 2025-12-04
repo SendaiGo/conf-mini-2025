@@ -1,0 +1,406 @@
+/* ウロウロするGopherくん */
+.wandering-gopher {
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    z-index: 100;
+    transition: transform 0.3s ease;
+    pointer-events: auto;
+}
+
+.wandering-gopher img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    transition: transform 0.2s ease;
+}
+
+.wandering-gopher:hover img {
+    transform: scale(1.1);
+}
+
+.gopher-speech-bubble {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 8px 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+    font-size: 14px;
+    color: #333;
+    animation: bounceIn 0.5s ease;
+}
+
+.gopher-speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white;
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    50% {
+        transform: translateX(-50%) translateY(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* チャットモーダル */
+.gopher-chat-modal {
+    position: fixed;
+    width: 400px;
+    height: 500px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+    animation: popIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* 吹き出しの三角形 */
+.gopher-chat-modal::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    z-index: 999;
+}
+
+/* 吹き出しの位置を動的に設定（JavaScriptで制御） */
+.gopher-chat-modal.tail-left::before {
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 15px 20px 15px 0;
+    border-color: transparent white transparent transparent;
+}
+
+.gopher-chat-modal.tail-right::before {
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 15px 0 15px 20px;
+    border-color: transparent transparent transparent white;
+}
+
+.gopher-chat-modal.tail-top::before {
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 15px 20px 15px;
+    border-color: transparent transparent white transparent;
+}
+
+.gopher-chat-modal.tail-bottom::before {
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 20px 15px 0 15px;
+    border-color: white transparent transparent transparent;
+}
+
+.gopher-chat-modal.active {
+    display: flex;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.gopher-chat-header {
+    background: linear-gradient(135deg, #00ADD8 0%, #007d9c 100%);
+    color: white;
+    padding: 20px;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gopher-chat-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.gopher-close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s;
+    line-height: 1;
+}
+
+.gopher-close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.gopher-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    background: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.gopher-message {
+    display: flex;
+    gap: 12px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gopher-message.user {
+    flex-direction: row-reverse;
+}
+
+.gopher-message-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+    line-height: 1;
+    background: linear-gradient(135deg, #00ADD8 0%, #007d9c 100%);
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 2px;
+}
+
+.gopher-message.user .gopher-message-avatar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gopher-message-content {
+    max-width: 70%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.gopher-message.bot .gopher-message-content {
+    background: white;
+    color: #333;
+    border-bottom-left-radius: 4px;
+}
+
+.gopher-message.user .gopher-message-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.gopher-typing-indicator {
+    display: flex;
+    gap: 4px;
+    padding: 4px 0;
+}
+
+.gopher-typing-indicator span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00ADD8;
+    animation: typing 1.4s infinite;
+}
+
+.gopher-typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.gopher-typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+    30% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+}
+
+.gopher-input-container {
+    padding: 20px;
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    gap: 12px;
+}
+
+.gopher-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 24px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: 'Noto Sans JP', 'Inter', sans-serif;
+}
+
+.gopher-input:focus {
+    border-color: #00ADD8;
+}
+
+.gopher-send-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00ADD8 0%, #007d9c 100%);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.gopher-send-btn:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 173, 216, 0.4);
+}
+
+.gopher-send-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.gopher-send-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: white;
+}
+
+.gopher-welcome {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+}
+
+.gopher-welcome h3 {
+    color: #00ADD8;
+    margin-bottom: 12px;
+    font-size: 20px;
+}
+
+.gopher-welcome p {
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+.gopher-suggestions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.gopher-suggestion-btn {
+    padding: 12px 16px;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+    color: #333;
+    text-align: left;
+    font-family: 'Noto Sans JP', 'Inter', sans-serif;
+}
+
+.gopher-suggestion-btn:hover {
+    border-color: #00ADD8;
+    background: #f0f9ff;
+    transform: translateX(4px);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .gopher-chat-modal {
+        width: calc(100vw - 40px);
+        height: calc(100vh - 140px);
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .wandering-gopher {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* スクロールバーのカスタマイズ */
+.gopher-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.gopher-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.gopher-messages::-webkit-scrollbar-thumb {
+    background: #00ADD8;
+    border-radius: 3px;
+}
+
+.gopher-messages::-webkit-scrollbar-thumb:hover {
+    background: #007d9c;
+}
