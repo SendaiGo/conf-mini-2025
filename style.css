@@ -828,6 +828,22 @@ body {
     object-fit: contain;
 }
 
+.sponsor-logo.community-text {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sponsor-logo.community-text span {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 1rem;
+}
+
 .sponsor-cta {
     margin-top: 4rem;
     text-align: center;
