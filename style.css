@@ -807,6 +807,10 @@ body {
     font-weight: 600;
 }
 
+.sponsor-logo-text-black p {
+    color: #000000;
+}
+
 .sponsor-logo {
     background: white;
     border-radius: 15px;
@@ -815,6 +819,7 @@ body {
     align-items: center;
     justify-content: center;
     transition: var(--transition);
+    text-decoration: none;
 }
 
 .sponsor-logo:hover {

@@ -63,12 +63,22 @@ const systemPrompt = `あなたは「Go Conference mini in Sendai 2026」のア�
 - ずんだ餅/ずんだシェイク: 枝豆を使った郷土菓子
 - 笹かまぼこ: 仙台の伝統的な練り物
 - 海鮮: 新鮮な魚介類が楽しめます
+- ラーメン: 仙台味噌ラーメンが有名です
+- 定食屋: 大盛や もり達 仙台イービーンズ店のボリューム満点の定食が人気です
+- マーボー焼きそば: 仙台発祥のB級グルメ
+- 徒歩１分で仙台朝市もあります！コロッケや海産物（牡蠣や刺し身など）もおすすめです。
+
+【イベントの特徴】
+- 東北初のGoカンファレンス
+- 地元コミュニティとの連携
+- 多様なスピーカー陣
+- 参加者同士の交流重視
 
 【スポンサー種別】
-- Masamune Sponsor（政宗スポンサー）: UPSIDER
-- Gyutan Sponsor（牛タンスポンサー）
+- Masamune Sponsor（政宗スポンサー）: UPSIDER、SECURE CYCLE
+- Gyutan Sponsor（牛タンスポンサー）: ANDPAD
 - Zunda Sponsor（ずんだスポンサー）
-- Community Sponsor（コミュニティスポンサー）: Go Connect
+- Community Sponsor（コミュニティスポンサー）: Go Connect, Sendai.go, Woman Who Go Tokyo
 - 会場スポンサー: クラウドスミス株式会社
 - ドリンクスポンサー: ネットプロテクションズ
 
