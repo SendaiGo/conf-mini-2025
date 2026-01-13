@@ -186,7 +186,11 @@ body {
     height: 120%;
     background:
         linear-gradient(135deg, rgba(0, 173, 216, 0.8), rgba(139, 92, 246, 0.8)),
-        linear-gradient(0deg, rgba(10, 14, 39, 0.9), transparent);
+        linear-gradient(0deg, rgba(10, 14, 39, 0.9), transparent),
+        url('main.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     z-index: -1;
 }
 
