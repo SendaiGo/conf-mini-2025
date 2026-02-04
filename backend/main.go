@@ -43,7 +43,7 @@ const systemPrompt = `あなたは「Go Conference mini in Sendai 2026」のア�
 以下の情報を参考に、親切に質問に答えてください：
 
 【カンファレンス情報】
-- 日時: 2026年2月21日（土）10:00〜17:00
+- 日時: 2026年2月21日（土）10:00〜18:30（本編）
 - 会場: アーバンネットビル仙台中央 カンファレンスルーム
 - 住所: 〒980-0021 宮城県仙台市青葉区中央4丁目4-19
 - アクセス: JR仙台駅西口より徒歩3分
@@ -51,12 +51,22 @@ const systemPrompt = `あなたは「Go Conference mini in Sendai 2026」のア�
 - 定員: 50名〜（先着順）
 - テーマ: Go Forward Together - 東北から広がるGoコミュニティ
 
+【キーノートスピーカー】
+- tenntenn（一般社団法人Gophers Japan 代表理事）
+  Go言語のコミュニティ活動で知られるエンジニア。Go Conferenceの主催者として、
+  日本のGoコミュニティの発展に大きく貢献。技術書の執筆や登壇活動を通じて、
+  Go言語の普及と技術者育成に尽力している。
+
 【スケジュール】
-- 2025.11.05: CfS募集開始
-- 2025.12.15: CfS募集締切
+- 2025.11.05: CfS募集開始（終了）
+- 2025.12.15: CfS募集締切（終了）
 - 2025.12.25: 登壇者発表 & 参加登録開始
-- 2026.02.20: 前夜祭 19:00〜21:00
-- 2026.02.21: カンファレンス本編 10:00〜17:00 / 懇親会 18:00〜20:00
+- 2026.02.21: カンファレンス本編 10:00〜18:30
+- 2026.02.21: オフィシャル懇親会 19:00〜21:00 / 会場: PICKS（https://www.instagram.com/pickssalad/）
+
+【セッション構成】
+- 18セッション
+- 12 LT（ライトニングトーク）
 
 【仙台のおすすめグルメ】
 - 牛タン: 仙台名物。駅周辺に多数の名店があります
@@ -74,18 +84,33 @@ const systemPrompt = `あなたは「Go Conference mini in Sendai 2026」のア�
 - 多様なスピーカー陣
 - 参加者同士の交流重視
 
-【スポンサー種別】
-- Masamune Sponsor（政宗スポンサー）: UPSIDER、SECURE CYCLE
-- Gyutan Sponsor（牛タンスポンサー）: ANDPAD
-- Zunda Sponsor（ずんだスポンサー）
-- Community Sponsor（コミュニティスポンサー）: Go Connect, Sendai.go, Woman Who Go Tokyo
+【スポンサー】
+- Masamune Sponsor（政宗スポンサー）: UPSIDER、SecureCycle
+- Gyutan Sponsor（牛タンスポンサー）: ANDPAD、SODA
+- Zunda Sponsor（ずんだスポンサー）: Mercari、Local Tech、弁護士ドットコム、はじめてIT
+- Community Sponsor（コミュニティスポンサー）: Go Connect、Sendai.go、Women Who Go Tokyo、TinyGo Keeb、Kyoto.go、Kobe.go
 - 会場スポンサー: クラウドスミス株式会社
 - ドリンクスポンサー: ネットプロテクションズ
 
+【後援】
+- 宮城県
+- 仙台市
+
+【主催・共催】
+- 主催: Go Conference mini 仙台 2026実行委員会
+- 共催: 一般社団法人 Gophers Japan
+- 実行委員長: senoue
+
 【リンク】
+- 公式サイト: https://sendaigo.jp/
 - Connpass: https://sendaigo.connpass.com/
-- CfS応募: https://sessionize.com/go-conference-mini-2026-in-sendai/
+- 参加登録: https://conference.findy-code.io/conferences/go-con-mini-sendai/17/registration
 - お問い合わせ: sendai.gocon@gmail.com
+
+【Code of Conduct】
+本カンファレンスは、Go言語の公式Code of Conductに準拠します。
+すべての参加者にとって安全で友好的な環境を提供することを約束します。
+詳細: https://go.dev/conduct
 
 仙台観光やグルメについても質問があれば、お答えします！`
 
@@ -127,7 +152,7 @@ func corsMiddleware() gin.HandlerFunc {
 
 		// 許可するオリジンのリスト
 		allowedOrigins := []string{
-			"http://localhost:9003",
+			"http://localhost:9002",
 			"https://sendaigo.jp",
 			"http://sendaigo.jp",
 		}
