@@ -246,6 +246,22 @@ body {
     color: var(--accent-color);
 }
 
+.schedule-notice {
+    margin-top: 2rem;
+    padding: 1.2rem 1.5rem;
+    background: rgba(255, 220, 220, 0.95);
+    border: 2px solid #e53e3e;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.schedule-notice p {
+    color: #c53030;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0;
+}
+
 @keyframes fadeInDown {
     from {
         opacity: 0;
